@@ -50,7 +50,8 @@ TG_BOT_TOKEN | Telegram Bot Token to send notification messages to. Used only if
 
 
 
-#Credits
+# Credits
 --------
-[EfanGSIs](github.com/erfanoadbi) for his GSI porting tool
-Me for creating these workflows & upload system
+- [EfanGSIs](github.com/erfanoadbi) for his GSI porting tool
+
+- Me for creating these workflows & upload system
