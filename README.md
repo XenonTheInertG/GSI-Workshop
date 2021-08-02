@@ -1,9 +1,9 @@
-Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://github.com/erfanoabdi/ErfanGSIs) then upload to sourceforge.
+Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://github.com/erfanoabdi/ErfanGSIs) then upload to sourceforge & github releases
 
 # Features
 - Easy to use.
 - Customizable. Chose your own custom ErfanGSIs tool, chose build type (A only or AB or both), and many more.
-- Deploy ported GSI to sourceforge.
+- Deploy ported GSI to sourceforge & github releases
 - Send notifications on telegram with informations about the latest build.
 
 # Requirements
