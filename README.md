@@ -1,4 +1,4 @@
-Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://github.com/erfanoabdi/ErfanGSIs) then upload to sourceforge & github releases
+Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://github.com/erfanoabdi/ErfanGSIs) then upload to sourceforge,github releases & wet transfer
 
 # Features
 - Easy to use.
@@ -50,5 +50,7 @@ TG_BOT_TOKEN | Telegram Bot Token to send notification messages to. Used only if
 
 
 
-> Remember that all the credits for the gsi porting tool belong to Erfan so if your GSI booted succesfully all of this is because of him. But if you wish to thank me for creating this github workflow and you find it helpfull you can also help me by giving stars to my repositories;)
-Have a great day
+#Credits
+--------
+[EfanGSIs](github.com/erfanoadbi) for his GSI porting tool
+Me for creating these workflows & upload system
