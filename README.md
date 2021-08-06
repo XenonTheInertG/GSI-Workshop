@@ -5,7 +5,7 @@ Generic System Image, referred to as GSI.
 Project Treble, which was added in Android 8, enables basically all phones that can be upgraded to Android 8 to have GSI flashing. That is to say, even if your manufacturer does not open to unlock BL, you can also use a special channel to unlock GSI after unlocking and play the game. Tripartite ROM (an allusion to a chrysanthemum factory).
 At present, there are mainly phh GSI (built from source code) and ErfanGSI (built from ROM). This script is developed based on the latter.
 
-# A brief introduction to GitHub Actions:
+# What's github action?
 Github Actions is a new feature launched by Github that can automatically build workflows for our projects, such as code inspection, automated packaging, testing, release versions, and so on. Because it is based on Docker, it is used up and released (nothing is stored).
 This is an independent Docker container that can run Ubuntu, Winserver and other operating systems (providing a complete environment). Provides the configuration of 2 core CPU, 7G RAM, 14G hard disk.
 In other words, as long as it can be done by a computer, it can basically do it.
