@@ -8,8 +8,8 @@ defaults:
     shell: bash
     
 env:
-  ROM_URL: http://bigota.d.miui.com/20.4.27/miui_MIMIX3_20.4.27_8f7879221b_10.0.zip
-  ROM_NAME: MIUI
+  ROM_URL: https://dl.google.com/dl/android/aosp/redfin-rd1a.200810.020-factory-c3ea1715.zip?hl=zh-cn
+  ROM_NAME: Pixel
   BUILD_TYPE: all
   TZ: Asia/Dhaka
 
