@@ -10,7 +10,7 @@ defaults:
 env:
   ROM_URL: https://dl.google.com/dl/android/aosp/redfin-rd1a.200810.020-factory-c3ea1715.zip?hl=zh-cn
   ROM_NAME: Pixel
-  BUILD_TYPE: all
+  BUILD_TYPE: ab
   TZ: Asia/Dhaka
 
 jobs:
