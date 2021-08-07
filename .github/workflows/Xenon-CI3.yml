@@ -12,7 +12,7 @@ env:
   ZIP_NAME: 'update.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
-  REPACK_NAME: 'Redfin-GSI-Workshop'
+  REPACK_NAME: 'SGSI.zip'
   VERSION: '12'
   upload_action-gh-release: 'true'
   SETUP: 'true'
