@@ -1,5 +1,6 @@
 Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://github.com/erfanoabdi/ErfanGSIs) then upload to sourceforge,github releases & other file upload websites.
-![workflow](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI/badge.svg)
+
+![GSI-Workshop](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI.yml/badge.svg)
 
 # What is GSI?
 Generic System Image, referred to as GSI.
