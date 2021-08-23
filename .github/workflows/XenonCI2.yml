@@ -13,6 +13,7 @@ env:
   MIR: gof
   TZ: America/Sao_Paulo
   READ: Warning! This is A64 (Binder) based firmware.
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 jobs:
   build:
     runs-on: ubuntu-latest
