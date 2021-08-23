@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM: ProjecSakura
+  ROM: ProjectSakura
   ROM_LINK: https://sourceforge.net/projects/projectsakura/files/phoenix/ProjectSakura-5.2-GAPPS-Core-20210810-1204-phoenix-OFFICIAL.zip/download?use_mirror=nav&r=&use_mirror=autoselect
   MIR: wet
   TZ: America/Sao_Paulo
