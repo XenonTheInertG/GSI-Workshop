@@ -8,9 +8,9 @@ defaults:
     shell: bash
 
 env:
-  ROM: MIUI
-  ROM_LINK: https://bigota.d.miui.com/V11.0.1.0.QCMINXM/miui_PINEINGlobal_V11.0.1.0.QCMINXM_bd739880d3_10.0.zip 
-  MIR: gof
+  ROM: ProjecSakura
+  ROM_LINK: https://sourceforge.net/projects/projectsakura/files/phoenix/ProjectSakura-5.2-GAPPS-Core-20210810-1204-phoenix-OFFICIAL.zip/download?use_mirror=nav&r=&use_mirror=autoselect
+  MIR: wet
   TZ: America/Sao_Paulo
   READ: Warning! This is A64 (Binder) based firmware.
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
