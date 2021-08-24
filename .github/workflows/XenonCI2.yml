@@ -8,10 +8,10 @@ defaults:
     shell: bash
 
 env:
-  ROM: ProjectSakura
-  ROM_LINK: https://sourceforge.net/projects/projectsakura/files/phoenix/ProjectSakura-5.2-GAPPS-Core-20210810-1204-phoenix-OFFICIAL.zip/download?use_mirror=nav&r=&use_mirror=autoselect
+  ROM: CalyxOS
+  ROM_LINK: https://release.calyxinstitute.org/crosshatch-factory-2.8.0.zip
   MIR: wet
-  TZ: America/Sao_Paulo
+  TZ: Asia/Dhaka
   READ: Warning! This is A64 (Binder) based firmware.
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 jobs:
