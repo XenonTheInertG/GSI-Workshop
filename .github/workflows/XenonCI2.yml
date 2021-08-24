@@ -9,7 +9,7 @@ defaults:
 
 env:
   ROM: CalyxOS
-  ROM_LINK: https://release.calyxinstitute.org/crosshatch-factory-2.8.0.zip
+  ROM_LINK: https://release.calyxinstitute.org/bramble-factory-2.8.0.zip
   MIR: wet
   TZ: Asia/Dhaka
   READ: Warning! This is A64 (Binder) based firmware.
