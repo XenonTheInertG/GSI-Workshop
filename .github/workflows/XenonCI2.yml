@@ -8,8 +8,8 @@ defaults:
     shell: bash
 
 env:
-  ROM: CalyxOS
-  ROM_LINK: https://release.calyxinstitute.org/bramble-factory-2.8.0.zip
+  ROM: Pixel
+  ROM_LINK: https://dl.google.com/dl/android/aosp/redfin-rd1a.200810.020-factory-c3ea1715.zip
   MIR: wet
   TZ: Asia/Dhaka
   READ: Warning! This is A64 (Binder) based firmware.
