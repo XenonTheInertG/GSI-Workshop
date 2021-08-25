@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM: Pixel
+  ROM: ProjectSakura
   ROM_LINK: https://dl.google.com/dl/android/aosp/redfin-rd1a.200810.020-factory-c3ea1715.zip
   MIR: wet
   TZ: Asia/Dhaka
