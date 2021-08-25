@@ -2,6 +2,9 @@ Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://git
 
 ![GSI-Workshop](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI.yml/badge.svg)
 
+[![Download GSI-Workshop's GSIs](https://sourceforge.net/sflogo.php?type=14&group_id=3279351)](https://sourceforge.net/p/gsi-workshop/)
+[![Download GSI-Workshop's GSIs](https://img.shields.io/sourceforge/dt/yumi-project.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download)
+
 # What is GSI?
 Generic System Image, referred to as GSI.
 Project Treble, which was added in Android 8, enables basically all phones that can be upgraded to Android 8 to have GSI flashing. That is to say, even if your manufacturer does not open to unlock BL, you can also use a special channel to unlock GSI after unlocking and play the game. Tripartite ROM (an allusion to a chrysanthemum factory).
