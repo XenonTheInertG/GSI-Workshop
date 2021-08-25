@@ -2,7 +2,6 @@ Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://git
 
 ![GSI-Workshop](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI.yml/badge.svg)
 
-[![Download GSI-Workshop's GSIs](https://sourceforge.net/sflogo.php?type=14&group_id=3279351)](https://sourceforge.net/p/gsi-workshop/)
 [![Download GSI-Workshop's GSIs](https://img.shields.io/sourceforge/dt/yumi-project.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download)
 
 # What is GSI?
