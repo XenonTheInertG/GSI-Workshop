@@ -1,67 +1,73 @@
-name: GSI-Workshop2
+name: GSI Build
 
 on:
   workflow_dispatch:
 
-defaults:
-  run:
-    shell: bash
-
 env:
-  ROM: ProjectSakura
-  ROM_LINK: https://dl.google.com/dl/android/aosp/redfin-rd1a.200810.020-factory-c3ea1715.zip
-  MIR: wet
-  TZ: Asia/Dhaka
-  READ: Warning! This is A64 (Binder) based firmware.
-  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+  ROM_URL: https://pilotfiber.dl.sourceforge.net/project/NusantaraProject//jasmine_sprout/Nusantara_v1.0-jasmine_sprout-14082020-OFFICIAL-0602.zip
+  ROM_NAME: Generic:Nusantara_v1
+  ZIP_NAME: Nusantara_v1
+  TZ: America/Sao_Paulo
+  MIR: gof
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
        - name: Checkout
-         uses: actions/checkout@main
+         uses: actions/checkout@master
+
+       - name: Initializing telegram bot
+         env:
+              TOKEN: ${{ secrets.BOT_TOKEN }}
+
+         run: |
+              sudo install telegram /usr/bin
+              chmod +x build/initial.sh
+              . build/initial.sh
 
        - name: Set up python
          uses: actions/setup-python@v2
          with:
            python-version: '3.8.2'
-
-       - name: Initializing telegram bot
-         env:
-              TOKEN: ${{ secrets.TOKEN }}
-
+ 
+       - name: Install python requirements
          run: |
-              sudo install telegram /usr/bin
-              chmod +x $ROM/initial.sh
-              . $ROM/initial.sh
-       
+              pip install pyrogram tgcrypto
+
        - name: Clone ErfanGSI Source Code
-         run: git clone --recurse-submodules https://github.com/amyGSI/ErfanGSIs
-       
+         run: git clone --recurse-submodules https://github.com/HitaloSama/ErfanGSIs.git
+
        - name: Setting up ErfanGSI requirements
          run: |
               sudo chmod -R 777 ErfanGSIs
               cd ErfanGSIs
               sudo bash setup.sh
-       
+
        - name: Execute Shell Script
          env:
-              TOKEN: ${{ secrets.TOKEN }}
+              TOKEN: ${{ secrets.BOT_TOKEN }}
               
          run: |
-               chmod +x $ROM/build.sh
-               . $ROM/build.sh
-               
-       - name: Copy and rename A-Only build info
+               chmod +x build/build.sh
+               . build/build.sh
+
+       - name: Copy and rename A-only build info
          run: cp ErfanGSIs/output/*Aonly*.txt Aonly.txt
+
+       - name: Print A-Only build info
+         run: |
+              cat ErfanGSIs/output/*Aonly*.txt
+
+       - name: Print AB build info
+         run: |
+              cat ErfanGSIs/output/*-AB-*.txt
 
        - name: Send build info to Telegram
          env:
               CHAT_ID: ${{ secrets.CHAT_ID }}
-              TOKEN: ${{ secrets.TOKEN }}
+              BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
               API_ID: ${{ secrets.API_ID }}
               API_HASH: ${{ secrets.API_HASH }}
-
          run: |
               python telebot/robot.py
