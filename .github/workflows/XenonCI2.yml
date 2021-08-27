@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
 
 env:
-  ROM_URL: https://pilotfiber.dl.sourceforge.net/project/NusantaraProject//jasmine_sprout/Nusantara_v1.0-jasmine_sprout-14082020-OFFICIAL-0602.zip
-  ROM_NAME: Generic:Nusantara_v1
-  ZIP_NAME: Nusantara_v1
+  ROM_URL: https://pilotfiber.dl.sourceforge.net/project/extendedui//lavender/ExtendedUI_1.2.1_lavender-10.0-20200507-0725-OFFICIAL.zip
+  ROM_NAME: Generic:ExtendedUI
+  ZIP_NAME: ExtendedUI_v1.2.1
   TZ: America/Sao_Paulo
   MIR: gof
 jobs:
