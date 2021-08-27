@@ -1,4 +1,4 @@
-name: GSI Build
+name: GSI-Workshop2
 
 on:
   workflow_dispatch:
