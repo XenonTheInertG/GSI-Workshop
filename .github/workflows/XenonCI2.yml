@@ -24,8 +24,8 @@ jobs:
 
          run: |
               sudo install telegram /usr/bin
-              chmod +x build/initial.sh
-              . build/initial.sh
+              chmod +x GSI/initial.sh
+              . GSI/initial.sh
 
        - name: Set up python
          uses: actions/setup-python@v2
@@ -50,8 +50,8 @@ jobs:
               TOKEN: ${{ secrets.BOT_TOKEN }}
               
          run: |
-               chmod +x build/build.sh
-               . build/build.sh
+               chmod +x GSI/build.sh
+               . GSI/build.sh
 
        - name: Copy and rename A-only build info
          run: cp ErfanGSIs/output/*Aonly*.txt Aonly.txt
