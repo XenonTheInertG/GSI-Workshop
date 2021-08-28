@@ -1,7 +1,12 @@
 Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://github.com/erfanoabdi/ErfanGSIs) then upload to sourceforge,github releases & other file upload websites.
 
 ![GSI-Workshop](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI.yml/badge.svg)
-[![Download GSI-Workshop's GSIs](https://img.shields.io/sourceforge/dt/yumi-project.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download)
+[![Download GSI-Workshop GSIs](https://img.shields.io/sourceforge/dm/velosh-gsis.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download)
+[![Download GSI-Workshop GSIs](https://img.shields.io/sourceforge/dw/velosh-gsis.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download)
+[![Download GSI-Workshop GSIs](https://img.shields.io/sourceforge/dt/velosh-gsis.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download)  
+[Download link](https://sourceforge.net/projects/gsi-workshop/files/)  
+Telegram group: https://t.me/techtweaky  
+Telegram channel: https://t.me/XenonTheInertGCI
 
 # What is GSI?
 Generic System Image, referred to as GSI.
