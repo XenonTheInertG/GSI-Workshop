@@ -9,6 +9,7 @@ env:
   ZIP_NAME: ExtendedUI_v1.2.1
   TZ: America/Sao_Paulo
   MIR: gof
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 jobs:
   build:
     runs-on: ubuntu-latest
