@@ -27,7 +27,7 @@ jobs:
             sudo -E apt-get -qq install git wget
        
        - name: Clone ErfanGSI Source Code
-         run: git clone --recurse-submodules https://github.com/erfanoabdi/ErfanGSIs.git ErfanGSIs
+         run: git clone --recurse-submodules https://github.com/XenonTheInertG/XenonGSIs.git ErfanGSIs
          
        - name: Fix exit
          run: |
@@ -62,8 +62,8 @@ jobs:
          uses: ncipollo/release-action@v1.8.6
          with:
            artifacts: ${{ github.workspace }}/ErfanGSIs/output/upload/*
-           name: ErfanGSIs-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}
-           tag: ErfanGSIs-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}-${{ github.run_number }}
+           name: GSI-Workshop-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}
+           tag:  GSI-Workshop${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}-${{ github.run_number }}
            token: ${{ secrets.GHP }}
 
          
