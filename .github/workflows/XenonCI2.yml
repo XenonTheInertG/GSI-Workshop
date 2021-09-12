@@ -1,0 +1,54 @@
+name: GSI-Workshop2
+
+on:
+workflow_dispatch:
+    
+env:
+  ROM_URL: https://otafsg1.h2os.com/patch/amazone2/GLO/NordOxygen/NordOxygen_14.O.10_GLO_010_2009260504/NordOxygen_14.O.10_OTA_010_all_2009260504_113aafee5.zip
+  ROM_NAME: OxygenOS
+  ZIP_NAME: OxygenOS-GSI-Workshop
+  TZ: Asia/Dhaka
+  MIR: gof
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@master
+           
+       - name: Initializing environment
+         run: |
+            sudo -E apt-get -qq update
+            sudo -E apt-get -qq install git openjdk-8-jdk wget
+
+       
+       - name: Clone ErfanGSI Source Code
+         run: git clone --recurse-submodules https://github.com/XenonTheInertG/XenonGSIs ErfanGSIs
+       
+       - name: Setting up ErfanGSI requirements
+         run: |
+              sudo chmod -R 777 ErfanGSIs
+              cd ErfanGSIs
+              sudo bash setup.sh
+       
+       - name: Download Stock Rom & Generate GSI
+         run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
+       
+       - name: Zip Aonly and upload 
+         run: |
+              mkdir final
+              sudo chmod -R 777 ErfanGSIs/output
+              zip -r ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
+              curl -sL https://git.io/file-transfer | sh
+              ./transfer $MIR ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z          
+       - name: Zip AB and upload 
+         run: |
+              zip -r ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
+              ./transfer $MIR ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z      
+       - name: Print build info
+         run: |
+              cat ErfanGSIs/output/*-Aonly-*.txt
+         
+            
