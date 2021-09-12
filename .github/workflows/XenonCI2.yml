@@ -1,7 +1,7 @@
 name: GSI-Workshop2
 
 on:
-workflow_dispatch:
+ workflow_dispatch:
     
 env:
   ROM_URL: https://otafsg1.h2os.com/patch/amazone2/GLO/NordOxygen/NordOxygen_14.O.10_GLO_010_2009260504/NordOxygen_14.O.10_OTA_010_all_2009260504_113aafee5.zip
