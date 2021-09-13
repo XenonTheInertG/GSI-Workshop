@@ -10,7 +10,6 @@ defaults:
 env:
   ROM_URL: https://bigota.d.miui.com/V12.5.4.0.RKJINXM/ares_in_global_images_V12.5.4.0.RKJINXM_20210721.0000.00_11.0_in_f38f58a6cb.tgz
   ROM_NAME: MIUI
-  BUILD_TYPE: all
   ZIP_NAME:MIUI-GSI-Workshop
   TZ: Asia/Dhaka
 
@@ -37,7 +36,7 @@ jobs:
               sudo bash setup.sh
        
        - name: Download Stock Rom & Generate GSI
-         run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME $BUILD_TYPE
+         run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
        
        - name: Zip Aonly
          run: |
