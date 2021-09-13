@@ -8,7 +8,7 @@ env:
   ROM_NAME: OxygenOS
   ZIP_NAME: OxygenOS-GSI-Workshop
   TZ: Asia/Dhaka
-  MIR: gof
+  MIR: wet
 jobs:
   build:
     runs-on: ubuntu-latest
