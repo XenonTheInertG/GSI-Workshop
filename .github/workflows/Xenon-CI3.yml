@@ -8,8 +8,8 @@ defaults:
     shell: bash
     
 env:
-  ROM_URL: https://transfer.sh/1P9vYSD/Nusantara_v2.9-11-certus-17052021-OFFICIAL-1502.zip
-  ROM_NAME: Generic
+  ROM_URL: https://bigota.d.miui.com/V12.5.4.0.RKJINXM/ares_in_global_images_V12.5.4.0.RKJINXM_20210721.0000.00_11.0_in_f38f58a6cb.tgz
+  ROM_NAME: MIUI
   BUILD_TYPE: ab
   TZ: Asia/Dhaka
 
