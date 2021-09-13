@@ -15,8 +15,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
-    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: ubuntu-latest
 
     steps:
        - name: Checkout
@@ -26,38 +25,41 @@ jobs:
          run: |
             sudo -E apt-get -qq install git wget
        
+              
        - name: Clone ErfanGSI Source Code
-         run: git clone --recurse-submodules https://github.com/XenonTheInertG/XenonGSIs.git ErfanGSIs
-
+         run: git clone --recurse-submodules https://github.com/XenonTheInertG/XenonGSIs ErfanGSIs
        
-       - name: Setting up ErfanGSI requirements with GSI Workshop setup script
+       - name: Setting up ErfanGSI requirements
          run: |
-              cd $GITHUB_WORKSPACE/ErfanGSIs
-              mkdir ./output
-              sudo bash ./setup.sh
-              
+              sudo chmod -R 777 ErfanGSIs
+              cd ErfanGSIs
+              sudo bash setup.sh
+       
        - name: Download Stock Rom & Generate GSI
-         run: |
-             cd $GITHUB_WORKSPACE/ErfanGSIs
-             sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
+         run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
        
-       - name: Zip GSI  
+       - name: Zip Aonly
          run: |
-              cd $GITHUB_WORKSPACE/ErfanGSIs/output
-              mkdir upload
-              zip -r GSI.zip ./*
-              if [[ $(du -sb "GSI.zip" | awk '{print $1}') -gt 2097152000 ]];then
-                  echo -e "split packaging..."
-                  tar -cpzf - "GSI.zip" | split -d -b 1024m - "upload/GSI.zip"
-              else
-                  mv GSI.zip upload/
-              fi
-              ls "upload"                  
-              
-       - name: Upload GSI to action-release.
+              mkdir final
+              sudo chmod -R 777 ErfanGSIs/output
+              zip -r ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
+          
+       - name: Zip AB
+         run: |
+              zip -r ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
+
+       - name: Upload AB 
          uses: ncipollo/release-action@v1.8.6
          with:
-           artifacts: ${{ github.workspace }}/ErfanGSIs/output/upload/*
+           artifacts: ${{ github.workspace }}ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z
+           name: GSI-Workshop-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}
+           tag:  GSI-Workshop${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}-${{ github.run_number }}
+           token: ${{ secrets.GHP }}
+
+      - name: Upload A Only
+         uses: ncipollo/release-action@v1.8.6
+         with:
+           artifacts: ${{ github.workspace }}ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z
            name: GSI-Workshop-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}
            tag:  GSI-Workshop${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}-${{ github.run_number }}
            token: ${{ secrets.GHP }}
