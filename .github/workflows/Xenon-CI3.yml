@@ -45,18 +45,10 @@ jobs:
               zip -r ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
               zip -r ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
 
-       - name: Upload AB 
+       - name: Upload to Git release
          uses: ncipollo/release-action@v1.8.6
          with:
-           artifacts: ${{ github.workspace }}/ErfanGSIs/output/final/*-GSI-AB.7z
-           name: GSI-Workshop-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}
-           tag:  GSI-Workshop${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}-${{ github.run_number }}
-           token: ${{ secrets.GHP }}
-
-       - name: Upload A Only
-         uses: ncipollo/release-action@v1.8.6
-         with:
-           artifacts: ${{ github.workspace }}/ErfanGSIs/output/final/*-GSI-Aonly.7z
+           artifacts: ${{ github.workspace }}/ErfanGSIs/output/final/*-GSI-Aonly &&*-GSI-AB.7z
            name: GSI-Workshop-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}
            tag:  GSI-Workshop${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}-${{ github.run_number }}
            token: ${{ secrets.GHP }}
