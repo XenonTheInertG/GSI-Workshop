@@ -38,7 +38,7 @@ jobs:
        - name: Download Stock Rom & Generate GSI
          run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
        
-       - name: Zip A only
+       - name: Zip ported files
          run: |
               mkdir final
               sudo chmod -R 777 ErfanGSIs/output
