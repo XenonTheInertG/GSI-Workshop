@@ -41,7 +41,7 @@ jobs:
        - name: Zip ported files
          run: |
               cd ErfanGSIs/output
-              mkdir final
+              sudo mkdir final
               zip -r ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
               zip -r ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
 
