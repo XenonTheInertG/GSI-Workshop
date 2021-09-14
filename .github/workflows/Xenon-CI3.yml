@@ -45,12 +45,12 @@ jobs:
               zip -r ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
           
        #- name: Zip AB
-         run: |
+         #run: |
               cd final 
               zip -r -r ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z . -i ErfanGSIs/output/*-AB-*.img
 
        #- name: Upload AB 
-         uses: ncipollo/release-action@v1.8.6
+         #uses: ncipollo/release-action@v1.8.6
          with:
            artifacts: ${{ github.workspace }}/ErfanGSIs/output/final/*-GSI-AB.7z
            name: GSI-Workshop-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}
