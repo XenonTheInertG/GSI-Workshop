@@ -47,7 +47,7 @@ jobs:
        - name: Zip AB
          run: |
               cd final 
-              zip -r ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z . -i ErfanGSIs/output/*-AB-*.img)
+              zip -r ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z -i ErfanGSIs/output/*-AB-*.img)
 
        - name: Upload AB 
          uses: ncipollo/release-action@v1.8.6
