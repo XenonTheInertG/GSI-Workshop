@@ -46,7 +46,8 @@ jobs:
           
        - name: Zip AB
          run: |
-              cd final 
+              cd final
+              sudo chmod -R 777 ErfanGSIs/output 
               zip -r ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
 
        - name: Upload AB 
