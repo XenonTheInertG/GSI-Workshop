@@ -18,25 +18,26 @@ Telegram channel: https://t.me/XenonTheInertGCI
 
 # Requirements
 
-<b>•If you want to port & upload GSI directly to your sourceforge project!</b>
+<b>• If you want to port & upload GSI directly to your sourceforge project!</b>
 
 - A little understanding on how to use ErfanGSIs tool.
 - A SourceForge account and project.
 - A little understanding on how SourceForge works and how to use it with sftp.
 
-<b>•If you want to port & upload GSI to file hosting websites</b>
+<b>• If you want to port & upload GSI to file hosting websites</b>
 - Scroll download & see website variables
 
-<b>•If you want to port & Upload GSI to github releases</b>
+<b>• If you want to port & Upload GSI to github releases</b>
 - PAT(Personal access token)
 
 # How To Use
+<h>For Sourceforge</h>
 - Fork the repo.
 - Setup ErfanGSIs configuration in config.env. See [ErfanGSIs Configuration](#ErfanGSIs-Configuration).
 - Setup SourceForge credentials in github secrets. See [SourceForge Configuration](#SourceForge-Configuration).
 - Go to actions tab, enable workflows.
 - Go to Actions tab again, click and run workflow manually.
-- It should take around 10 to succesfully build and upload your builds to sourceforge.com.
+- It should take around 10-30 miniute to succesfully build and upload your builds to sourceforge.com.
 
 # How to update
 - Change ErfanGSIs configuration in config.env. [ErfanGSIs Configuration](#ErfanGSIs-Configuration).
