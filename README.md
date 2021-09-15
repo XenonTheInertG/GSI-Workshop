@@ -17,9 +17,18 @@ Telegram channel: https://t.me/XenonTheInertGCI
 - Send notifications on telegram with informations about the latest build.
 
 # Requirements
+
+<b>If you want to port & upload GSI directly to your sourceforge project!</b>
+
 - A little understanding on how to use ErfanGSIs tool.
 - A SourceForge account and project.
 - A little understanding on how SourceForge works and how to use it with sftp.
+
+<b>If you want to port & upload GSI to file hosting websites</b>
+- Scroll download & see website variables
+
+<b>If you want to port & Upload GSI to github releases
+- PAT(Personal access token)
 
 # How To Use
 - Fork the repo.
