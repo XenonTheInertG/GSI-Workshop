@@ -27,7 +27,7 @@ Telegram channel: https://t.me/XenonTheInertGCI
 <b>•If you want to port & upload GSI to file hosting websites</b>
 - Scroll download & see website variables
 
-<b>•If you want to port & Upload GSI to github releases
+<b>•If you want to port & Upload GSI to github releases</b>
 - PAT(Personal access token)
 
 # How To Use
