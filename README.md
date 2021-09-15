@@ -31,7 +31,6 @@ Telegram channel: https://t.me/XenonTheInertGCI
 - PAT(Personal access token)
 
 # How To Use
-<h>For Sourceforge</h>
 - Fork the repo.
 - Setup ErfanGSIs configuration in config.env. See [ErfanGSIs Configuration](#ErfanGSIs-Configuration).
 - Setup SourceForge credentials in github secrets. See [SourceForge Configuration](#SourceForge-Configuration).
