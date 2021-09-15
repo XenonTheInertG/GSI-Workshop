@@ -10,7 +10,6 @@ defaults:
 env:
   ROM_URL: https://bigota.d.miui.com/V12.5.4.0.RKJINXM/ares_in_global_images_V12.5.4.0.RKJINXM_20210721.0000.00_11.0_in_f38f58a6cb.tgz
   ROM_NAME: MIUI
-  ZIP_NAME: MIUI-GSI-Workshop
   TZ: Asia/Dhaka
 
 jobs:
@@ -37,18 +36,11 @@ jobs:
        
        - name: Download Stock Rom & Generate GSI
          run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
-       
-       - name: Zip ported files
-         run: |
-              cd ErfanGSIs
-              sudo mkdir final
-              zip -r ErfanGSIs/final/$ZIP_NAME-GSI-Aonly.7z ErfanGSIs/*-Aonly-*.img
-              zip -r ErfanGSIs/final/$ZIP_NAME-GSI-AB.7z ErfanGSIs/*-AB-*.img
 
        - name: Upload to Git release
          uses: ncipollo/release-action@v1.8.6
          with:
-           artifacts: ${{ github.workspace }}/ErfanGSIs/final/$ZIP_NAME-GSI-Aonly.7z && $ZIP_NAME-GSI-AB.7z
+           artifacts: ${{ github.workspace }}/ErfanGSIs/*
            name: GSI-Workshop-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}
            tag:  GSI-Workshop${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}-${{ github.run_number }}
            token: ${{ secrets.GHP }}
