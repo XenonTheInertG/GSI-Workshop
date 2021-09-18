@@ -8,13 +8,15 @@ defaults:
     shell: bash
     
 env:
-  ROM_URL: https://bigota.d.miui.com/V12.5.4.0.RKJINXM/ares_in_global_images_V12.5.4.0.RKJINXM_20210721.0000.00_11.0_in_f38f58a6cb.tgz
+  ROM_URL: https://bigota.d.miui.com/V12.5.1.0.QCDCNXM/miui_DANDELION_V12.5.1.0.QCDCNXM_bc97ff5733_10.0.zip
   ROM_NAME: MIUI
+  BUILD_TYPE: ab
   TZ: Asia/Dhaka
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
        - name: Checkout
@@ -24,23 +26,42 @@ jobs:
          run: |
             sudo -E apt-get -qq install git wget
        
-              
        - name: Clone ErfanGSI Source Code
-         run: git clone --recurse-submodules https://github.com/XenonTheInertG/XenonGSIs ErfanGSIs
-       
-       - name: Setting up ErfanGSI requirements
+         run: git clone --recurse-submodules https://github.com/XenonTheInertG/XenonGSIs.git ErfanGSIs
+         
+       - name: Fix exit
          run: |
-              sudo chmod -R 777 ErfanGSIs
-              cd ErfanGSIs
-              sudo bash setup.sh
+              sed -i 's/\|\| exit 1//g' $GITHUB_WORKSPACE/ErfanGSIs/url2GSI.sh
+              sed -i 's/exit 1//g' $GITHUB_WORKSPACE/ErfanGSIs/url2GSI.sh
        
+       - name: Setting up ErfanGSI requirements with GSI Workshop setup script
+         run: |
+              cd $GITHUB_WORKSPACE/ErfanGSIs
+              mkdir ./output
+              sudo bash ./setup.sh
+              
        - name: Download Stock Rom & Generate GSI
-         run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
-
-       - name: Upload to Git release
+         run: |
+             cd $GITHUB_WORKSPACE/ErfanGSIs
+             sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
+       
+       - name: Zip GSI  
+         run: |
+              cd $GITHUB_WORKSPACE/ErfanGSIs/output
+              mkdir upload
+              zip -r GSI.zip ./*
+              if [[ $(du -sb "GSI.zip" | awk '{print $1}') -gt 2097152000 ]];then
+                  echo -e "split packaging..."
+                  tar -cpzf - "GSI.zip" | split -d -b 1024m - "upload/GSI.zip"
+              else
+                  mv GSI.zip upload/
+              fi
+              ls "upload"                  
+              
+       - name: Upload GSI to action-release.
          uses: ncipollo/release-action@v1.8.6
          with:
-           artifacts: ${{ github.workspace }}/ErfanGSIs/*
+           artifacts: ${{ github.workspace }}/ErfanGSIs/output/upload/*
            name: GSI-Workshop-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}
-           tag:  GSI-Workshop${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}-${{ github.run_number }}
+           tag: GSI-Workshop${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}-${{ github.run_number }}
            token: ${{ secrets.GHP }}
