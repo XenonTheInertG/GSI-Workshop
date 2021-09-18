@@ -42,19 +42,19 @@ jobs:
               sudo bash setup.sh
        
        - name: Download Stock Rom & Generate GSI
-         run: sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
+         run: sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.rom_type }}"
        
        - name: Zip Aonly and upload 
          run: |
               mkdir final
               sudo chmod -R 777 ErfanGSIs/output
-              zip -r ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
+              zip -r ErfanGSIs/output/"${{ steps.config.outputs.zip_name }}"-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
               curl -sL https://git.io/file-transfer | sh
-              ./transfer $MIR ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z          
+              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.zip_name }}"-GSI-Aonly.7z          
        - name: Zip AB and upload 
          run: |
-              zip -r ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
-              ./transfer $MIR ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z      
+              zip -r ErfanGSIs/output/"${{ steps.config.outputs.zip_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
+              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.zip_name }}"-GSI-AB.7z      
        - name: Print build info
          run: |
               cat ErfanGSIs/output/*-Aonly-*.txt
