@@ -26,13 +26,6 @@ jobs:
           required "${{ steps.config.outputs.zip_name }}" "ZIP_NAME config"
           required "${{ steps.config.outputs.mir }}" "MIR config"
 
-
-       - name: Initializing environment
-         run: |
-            sudo -E apt-get -qq update
-            sudo -E apt-get -qq install git openjdk-8-jdk wget
-
-       
        - name: Clone ErfanGSI Source Code
          run: git clone --recurse-submodules https://github.com/XenonTheInertG/XenonGSIs ErfanGSIs
        
@@ -59,5 +52,3 @@ jobs:
        - name: Print build info
          run: |
               cat ErfanGSIs/output/*-Aonly-*.txt
-         
-            
