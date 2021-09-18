@@ -24,8 +24,7 @@ jobs:
           required "${{ steps.config.outputs.url }}" "URL config"
           required "${{ steps.config.outputs.rom_type }}" "ROM_TYPE config"
           required "${{ steps.config.outputs.zip_name }}" "ZIP_NAME config"
-          required "${{ steps.config.outputs.mir }}" "MIR config"
-        
+          required "${{ steps.config.outputs.mir }}" "MIR config"        
        - name: Initializing environment
          run: |
             sudo -E apt-get -qq update
