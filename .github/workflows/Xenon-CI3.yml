@@ -63,8 +63,8 @@ jobs:
               
       - name: Upload GSI to action-release.
         uses: ncipollo/release-action@v1.8.6
-         with:
-           artifacts: ${{ github.workspace }}/ErfanGSIs/output/upload/*
-           name: GSI-Workshop-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}
-           tag: GSI-Workshop${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}-${{ github.run_number }}
-           token: ${{ secrets.GHP }}
+        with:
+          artifacts: ${{ github.workspace }}/ErfanGSIs/output/upload/*
+          name: GSI-Workshop-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}
+          tag: GSI-Workshop${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}-${{ github.run_number }}
+          token: ${{ secrets.GHP }}
