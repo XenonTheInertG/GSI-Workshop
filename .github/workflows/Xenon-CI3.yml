@@ -61,8 +61,8 @@ jobs:
             fi
             ls "upload"                  
               
-       - name: Upload GSI to action-release.
-         uses: ncipollo/release-action@v1.8.6
+      - name: Upload GSI to action-release.
+        uses: ncipollo/release-action@v1.8.6
          with:
            artifacts: ${{ github.workspace }}/ErfanGSIs/output/upload/*
            name: GSI-Workshop-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}
