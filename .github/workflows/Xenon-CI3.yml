@@ -46,7 +46,7 @@ jobs:
       - name: Download Stock Rom & Generate GSI
         run: |
             cd $GITHUB_WORKSPACE/ErfanGSIs
-            sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
+            sudo bash ./url2GSI.sh -c --$BUILD_TYPE "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.rom_type }}" "${{ steps.config.outputs.build_type }}"
        
       - name: Zip GSI  
         run: |
@@ -65,6 +65,6 @@ jobs:
         uses: ncipollo/release-action@v1.8.6
         with:
           artifacts: ${{ github.workspace }}/ErfanGSIs/output/upload/*
-          name: GSI-Workshop-${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}
-          tag: GSI-Workshop${{ env.ROM_NAME }}-${{ env.BUILD_TYPE }}-${{ github.run_number }}
+          name: GSI-Workshop-${{ env."${{ steps.config.outputs.rom_type }}" }}-${{ env."${{ steps.config.outputs.build_type }}" }}
+          tag: GSI-Workshop${{ env."${{ steps.config.outputs.rom_type }}" }}-${{ env."${{ steps.config.outputs.build_type }}" }}-${{ github.run_number }}
           token: ${{ secrets.GHP }}
