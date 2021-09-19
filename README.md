@@ -4,7 +4,7 @@ Port OEM ROMs,Custom ROMs to project treble using github actions and [ErfanGSIs]
 [![Download GSI-Workshop GSIs](https://img.shields.io/sourceforge/dm/velosh-gsis.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download)
 [![Download GSI-Workshop GSIs](https://img.shields.io/sourceforge/dw/velosh-gsis.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download)
 [![Download GSI-Workshop GSIs](https://img.shields.io/sourceforge/dt/velosh-gsis.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2cadab25a04c42779f3203b4a61bd6ef)](https://app.codacy.com/gh/XenonTheInertG/GSI-Workshop?utm_source=github.com&utm_medium=referral&utm_content=XenonTheInertG/GSI-Workshop&utm_campaign=Badge_Grade)
-[![Download GSI](https://img.shields.io/sourceforge/dm/gmorgan.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download) [![Telegram channel](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](t.me/XenonTheInertGCI)
+[![Download GSI](https://sourceforge.net/sflogo.php?type=16&group_id=96355)](https://sourceforge.net/p/XenonTheInertG/) [![Telegram channel](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](t.me/XenonTheInertGCI)
 [![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](t.me/techtweaky) 
 
 
