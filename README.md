@@ -1,6 +1,6 @@
 Port OEM ROMs,Custom ROMs to project treble using github actions and [ErfanGSIs](https://github.com/erfanoabdi/ErfanGSIs) then upload to sourceforge,github releases & other file upload websites.
 
-![GSI-Workshop](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI.yml/badge.svg)
+![GSI-Workshop](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI.yml/badge.svg) [![GSI-Workshop2](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/XenonCI2.yml/badge.svg)](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/XenonCI2.yml) [![GSI-Workshop3](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI3.yml/badge.svg)](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI3.yml)
 [![Download GSI-Workshop GSIs](https://img.shields.io/sourceforge/dm/velosh-gsis.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download)
 [![Download GSI-Workshop GSIs](https://img.shields.io/sourceforge/dw/velosh-gsis.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download)
 [![Download GSI-Workshop GSIs](https://img.shields.io/sourceforge/dt/velosh-gsis.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download)  
