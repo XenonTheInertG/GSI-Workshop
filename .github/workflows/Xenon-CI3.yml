@@ -34,32 +34,32 @@ jobs:
          
       - name: Fix exit
         run: |
-              sed -i 's/\|\| exit 1//g' $GITHUB_WORKSPACE/ErfanGSIs/url2GSI.sh
-              sed -i 's/exit 1//g' $GITHUB_WORKSPACE/ErfanGSIs/url2GSI.sh
+            sed -i 's/\|\| exit 1//g' $GITHUB_WORKSPACE/ErfanGSIs/url2GSI.sh
+            sed -i 's/exit 1//g' $GITHUB_WORKSPACE/ErfanGSIs/url2GSI.sh
        
       - name: Setting up ErfanGSI requirements with GSI Workshop setup script
         run: |
-              cd $GITHUB_WORKSPACE/ErfanGSIs
-              mkdir ./output
-              sudo bash ./setup.sh
+            cd $GITHUB_WORKSPACE/ErfanGSIs
+            mkdir ./output
+            sudo bash ./setup.sh
               
       - name: Download Stock Rom & Generate GSI
         run: |
-             cd $GITHUB_WORKSPACE/ErfanGSIs
-             sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
+            cd $GITHUB_WORKSPACE/ErfanGSIs
+            sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
        
       - name: Zip GSI  
         run: |
-             cd $GITHUB_WORKSPACE/ErfanGSIs/output
-             mkdir upload
-             zip -r GSI.zip ./*
-             if [[ $(du -sb "GSI.zip" | awk '{print $1}') -gt 2097152000 ]];then
-                  echo -e "split packaging..."
+            cd $GITHUB_WORKSPACE/ErfanGSIs/output
+            mkdir upload
+            zip -r GSI.zip ./*
+            if [[ $(du -sb "GSI.zip" | awk '{print $1}') -gt 2097152000 ]];then
+                echo -e "split packaging..."
                   tar -cpzf - "GSI.zip" | split -d -b 1024m - "upload/GSI.zip"
               else
                   mv GSI.zip upload/
-              fi
-              ls "upload"                  
+            fi
+            ls "upload"                  
               
        - name: Upload GSI to action-release.
          uses: ncipollo/release-action@v1.8.6
