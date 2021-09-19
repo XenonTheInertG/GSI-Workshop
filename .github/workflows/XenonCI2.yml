@@ -1,4 +1,4 @@
-me: GSI-Workshop2
+name: GSI-Workshop2
 
 on:
   workflow_dispatch:
