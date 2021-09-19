@@ -1,4 +1,4 @@
-name: GSI-Workshop3
+me: GSI-Workshop3
 
 on:
   workflow_dispatch:
@@ -6,51 +6,54 @@ on:
 defaults:
   run:
     shell: bash
-    
-env:
-  ROM_URL: https://bigota.d.miui.com/V12.5.1.0.QCDCNXM/miui_DANDELION_V12.5.1.0.QCDCNXM_bc97ff5733_10.0.zip
-  ROM_NAME: MIUI
-  BUILD_TYPE: ab
-  TZ: Asia/Dhaka
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event.repository.owner.id == github.event.sender.id
-
     steps:
-       - name: Checkout
-         uses: actions/checkout@master
-           
-       - name: Initialization environment
-         run: |
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Load Configuration
+        uses: falti/dotenv-action@v0.2.5
+        id: config
+        with:
+          path: config3.env
+      - name: Check Configuration
+        run: |
+          function required () { if ! [[ "$1" ]]; then echo "$2 variable can't be null." && exit 1; fi }
+          required "${{ steps.config.outputs.url }}" "URL config"
+          required "${{ steps.config.outputs.rom_type }}" "ROM_TYPE config"
+          required "${{ steps.config.outputs.build_type }}" "BUILD_TYPE config"
+
+      - name: Initialization environment
+        run: |
             sudo -E apt-get -qq install git wget
        
-       - name: Clone ErfanGSI Source Code
-         run: git clone --recurse-submodules https://github.com/XenonTheInertG/XenonGSIs.git ErfanGSIs
+      - name: Clone ErfanGSI Source Code
+        run: git clone --recurse-submodules https://github.com/XenonTheInertG/XenonGSIs.git ErfanGSIs
          
-       - name: Fix exit
-         run: |
+      - name: Fix exit
+        run: |
               sed -i 's/\|\| exit 1//g' $GITHUB_WORKSPACE/ErfanGSIs/url2GSI.sh
               sed -i 's/exit 1//g' $GITHUB_WORKSPACE/ErfanGSIs/url2GSI.sh
        
-       - name: Setting up ErfanGSI requirements with GSI Workshop setup script
-         run: |
+      - name: Setting up ErfanGSI requirements with GSI Workshop setup script
+        run: |
               cd $GITHUB_WORKSPACE/ErfanGSIs
               mkdir ./output
               sudo bash ./setup.sh
               
-       - name: Download Stock Rom & Generate GSI
-         run: |
+      - name: Download Stock Rom & Generate GSI
+        run: |
              cd $GITHUB_WORKSPACE/ErfanGSIs
              sudo bash ./url2GSI.sh -c --$BUILD_TYPE $ROM_URL $ROM_NAME
        
-       - name: Zip GSI  
-         run: |
-              cd $GITHUB_WORKSPACE/ErfanGSIs/output
-              mkdir upload
-              zip -r GSI.zip ./*
-              if [[ $(du -sb "GSI.zip" | awk '{print $1}') -gt 2097152000 ]];then
+      - name: Zip GSI  
+        run: |
+             cd $GITHUB_WORKSPACE/ErfanGSIs/output
+             mkdir upload
+             zip -r GSI.zip ./*
+             if [[ $(du -sb "GSI.zip" | awk '{print $1}') -gt 2097152000 ]];then
                   echo -e "split packaging..."
                   tar -cpzf - "GSI.zip" | split -d -b 1024m - "upload/GSI.zip"
               else
