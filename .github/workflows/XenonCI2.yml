@@ -25,8 +25,11 @@ jobs:
           required "${{ steps.config.outputs.rom_type }}" "ROM_TYPE config"
           required "${{ steps.config.outputs.zip_name }}" "ZIP_NAME config"
           required "${{ steps.config.outputs.mir }}" "MIR config"
+
+
        - name: Clone ErfanGSI Source Code
          run: git clone --recurse-submodules https://github.com/XenonTheInertG/XenonGSIs ErfanGSIs
+
        - name: Setting up ErfanGSI requirements
          run: |
               sudo chmod -R 777 ErfanGSIs
