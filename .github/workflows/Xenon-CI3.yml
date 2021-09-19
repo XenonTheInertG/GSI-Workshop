@@ -65,6 +65,6 @@ jobs:
         uses: ncipollo/release-action@v1.8.6
         with:
           artifacts: ${{ github.workspace }}/ErfanGSIs/output/upload/*
-          name: GSI-Workshop-${{ env."${{ steps.config.outputs.rom_type }}" }}-${{ env."${{ steps.config.outputs.build_type }}" }}
-          tag: GSI-Workshop${{ env."${{ steps.config.outputs.rom_type }}" }}-${{ env."${{ steps.config.outputs.build_type }}" }}-${{ github.run_number }}
+          name: GSI-Workshop-"${{ steps.config.outputs.rom_type }}"-"${{ steps.config.outputs.build_type }}"
+          tag: GSI-Workshop"${{ steps.config.outputs.rom_type }}"-"${{ steps.config.outputs.build_type }}"-${{ github.run_number }}
           token: ${{ secrets.GHP }}
