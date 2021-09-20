@@ -31,11 +31,6 @@ jobs:
        
       - name: Clone ErfanGSI Source Code
         run: git clone --recurse-submodules https://github.com/XenonTheInertG/XenonGSIs.git ErfanGSIs
-         
-      - name: Fix exit
-        run: |
-            sed -i 's/\|\| exit 1//g' $GITHUB_WORKSPACE/ErfanGSIs/url2GSI.sh
-            sed -i 's/exit 1//g' $GITHUB_WORKSPACE/ErfanGSIs/url2GSI.sh
        
       - name: Setting up ErfanGSI requirements with GSI Workshop setup script
         run: |
@@ -62,9 +57,6 @@ jobs:
             ls "upload"                  
               
       - name: Upload GSI to action-release.
-        uses: ncipollo/release-action@v1.8.6
+        uses: softprops/action-gh-release@v1
         with:
-          artifacts: ${{ github.workspace }}/ErfanGSIs/output/upload/*
-          name: GSI-Workshop-"${{ steps.config.outputs.rom_type }}"-"${{ steps.config.outputs.build_type }}"
-          tag: GSI-Workshop"${{ steps.config.outputs.rom_type }}"-"${{ steps.config.outputs.build_type }}"-${{ github.run_number }}
-          token: ${{ secrets.GHP }}
+           files: GSI.zip
