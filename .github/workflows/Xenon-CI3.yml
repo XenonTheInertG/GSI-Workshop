@@ -44,11 +44,12 @@ jobs:
        
       - name: Zip GSI  
         run: |
-            mkdir upload
-            gzip -r                   
+            mkdir build/
+          sudo mv ErfanGSIs/output/*.img build/
+          gzip -r build/                  
               
       - name: Upload GSI to action-release.
         uses: softprops/action-gh-release@v1
         with:
-           tag_name: MIUI
-           files: GSI.zip
+           tag_name: test
+           files: build/
