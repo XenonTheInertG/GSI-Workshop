@@ -40,7 +40,7 @@ jobs:
               
       - name: Download Stock Rom & Generate GSI
         run: |
-              sudo bash ./url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.rom_type }}" "${{ steps.config.outputs.build_type }}"
+              sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.rom_type }}" "${{ steps.config.outputs.build_type }}"
        
       - name: Zip GSI  
         run: |
