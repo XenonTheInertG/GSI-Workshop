@@ -34,27 +34,18 @@ jobs:
        
       - name: Setting up ErfanGSI requirements with GSI Workshop setup script
         run: |
-            cd $GITHUB_WORKSPACE/ErfanGSIs
-            mkdir ./output
-            sudo bash ./setup.sh
+             sudo chmod -R 777 ErfanGSIs
+             cd ErfanGSIs
+             sudo bash setup.sh
               
       - name: Download Stock Rom & Generate GSI
         run: |
-            cd $GITHUB_WORKSPACE/ErfanGSIs
             sudo bash ./url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.rom_type }}" "${{ steps.config.outputs.build_type }}"
        
       - name: Zip GSI  
         run: |
-            cd $GITHUB_WORKSPACE/ErfanGSIs/output
             mkdir upload
-            zip -r GSI.zip ./*
-            if [[ $(du -sb "GSI.zip" | awk '{print $1}') -gt 2097152000 ]];then
-                echo -e "split packaging..."
-                  tar -cpzf - "GSI.zip" | split -d -b 1024m - "upload/GSI.zip"
-              else
-                  mv GSI.zip upload/
-            fi
-            ls "upload"                  
+            gzip -r                   
               
       - name: Upload GSI to action-release.
         uses: softprops/action-gh-release@v1
