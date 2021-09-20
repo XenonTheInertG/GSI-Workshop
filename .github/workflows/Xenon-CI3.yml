@@ -59,4 +59,5 @@ jobs:
       - name: Upload GSI to action-release.
         uses: softprops/action-gh-release@v1
         with:
+           tag: MIUI
            files: GSI.zip
