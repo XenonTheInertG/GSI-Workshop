@@ -45,8 +45,8 @@ jobs:
       - name: Zip GSI  
         run: |
             mkdir build/
-          sudo mv ErfanGSIs/output/*.img build/
-          gzip -r build/                  
+            sudo mv ErfanGSIs/output/*.img build/
+            gzip -r build/                  
               
       - name: Upload GSI to action-release.
         uses: softprops/action-gh-release@v1
