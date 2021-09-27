@@ -52,4 +52,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
            tag_name: test
-           files: build/
+           files: ${{ github.workspace }}/ErfanGSIs/build/*
