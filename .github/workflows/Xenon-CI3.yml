@@ -24,6 +24,7 @@ jobs:
           required "${{ steps.config.outputs.url }}" "URL config"
           required "${{ steps.config.outputs.rom_type }}" "ROM_TYPE config"
           required "${{ steps.config.outputs.build_type }}" "BUILD_TYPE config"
+          required "${{ steps.config.outputs.repackname }}" "REPACK_NAME config"
 
       - name: Initialization environment
         run: |
