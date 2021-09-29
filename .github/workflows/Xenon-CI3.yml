@@ -54,4 +54,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
            tag_name: test
-           files: ${{ github.workspace }}/ErfanGSIs/build/*
+           files: ${{ github.workspace }}/ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z
