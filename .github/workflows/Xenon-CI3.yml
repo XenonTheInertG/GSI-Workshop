@@ -24,7 +24,7 @@ jobs:
           required "${{ steps.config.outputs.url }}" "URL config"
           required "${{ steps.config.outputs.rom_type }}" "ROM_TYPE config"
           required "${{ steps.config.outputs.build_type }}" "BUILD_TYPE config"
-          required "${{ steps.config.outputs.repackname }}" "REPACK_NAME config"
+          required "${{ steps.config.outputs.repack_name }}" "REPACK_NAME config"
 
       - name: Initialization environment
         run: |
@@ -45,9 +45,10 @@ jobs:
        
       - name: Zip GSI  
         run: |
-              mkdir build/
-              sudo mv ErfanGSIs/output/*.img build/
-              gzip -r build/                  
+              mkdir final
+              sudo chmod -R 777 ErfanGSIs/output
+              zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
+              zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img               
               
       - name: Upload GSI to action-release.
         uses: softprops/action-gh-release@v1
