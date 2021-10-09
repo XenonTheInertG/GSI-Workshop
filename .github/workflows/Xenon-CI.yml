@@ -27,7 +27,7 @@ jobs:
           required "${{ steps.config.outputs.tool_repo }}" "TOOL_REPO config"
           required "${{ steps.config.outputs.url }}" "URL config"
           required "${{ steps.config.outputs.firmware_type }}" "FIRMWARE_TYPE config"
-          required "${{ steps.config.outputs.sourceforge_dir }}" "SOURCEFORGE_DIR config"
+          required "${{ steps.config.outputs.sf_dir }}" "SF_DIR config"
           required "${{ steps.config.outputs.output_type }}" "OUTPUT_TYPE config"
       - name: Setup ErfanGSIs Tools
         run: |
@@ -60,12 +60,12 @@ jobs:
       - name: Upload
         run: |
           ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
-          sshpass -p "${{ secrets.PASSWORD }}" rsync -arsP -e ssh build/ "${{ secrets.USERNAME }}@frs.sourceforge.net:${{ steps.config.outputs.sourceforge_dir }}"
+          sshpass -p "${{ secrets.PASSWORD }}" rsync -arsP -e ssh build/ "${{ secrets.USERNAME }}@frs.sourceforge.net:${{ steps.config.outputs.sf_dir }}"
       - name: Telegram Notify
-        if: ${{ steps.config.outputs.tg_chat_ids != 0 }}
+        if: ${{ steps.config.outputs.chat_id != 0 }}
         run: |
-          BOT_TOKEN="${{ secrets.TG_BOT_TOKEN }}"
-          CHAT_IDS="${{ steps.config.outputs.tg_chat_ids }}"
+          BOT_TOKEN="${{ secrets.TOKEN }}"
+          CHAT_IDS="${{ steps.config.outputs.chat_id }}"
           TG_URL="https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
 
           chatids=("$CHAT_IDS")
@@ -74,7 +74,7 @@ jobs:
             TYPE="${{ steps.config.outputs.firmware_type }}"
             OUTPUT="${{ steps.config.outputs.output_type }}"
             BASE="${{ steps.config.outputs.url }}"
-            SOURCEFORGE="${{ steps.config.outputs.sourceforge_url }}"
+            SOURCEFORGE="${{ steps.config.outputs.sf_url }}"
             for file in build/*.txt; do
               filename=$(basename -- "$file")
               sed -i "1s/^/Name: ${filename%.*}\n/" "$file"
