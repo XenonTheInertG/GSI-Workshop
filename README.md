@@ -51,9 +51,9 @@ Port OEM ROMs,Custom ROMs to project treble using github actions and [ErfanGSIs]
   URL| Firmware download link or path on the repo.
   FIRMWARE\_TYPE| Firmware type (eg: Pixel).
   OUTPUT\_TYPE| Build type. Can be: "all" to build AB and AOnly; "ab" to build just AB; "a" to build just AOnly.
-  SOURCEFORGE\_DIR| The directory on sourceforge. See: https://sourceforge.net/p/forge/documentation/SFTP/#for-managing-file-releases
-  TG\_CHAT\_IDS| List of telegram chat id separated by space where to send info about the latest builds. Set to 0 to disable telegram notifications.
-  SOURCEFORGE\_URL| Url to the sourceforge directory where the builds are uploaded. Used if telegram notifications are enabled.
+  SF\_DIR| The directory on sourceforge. See: https://sourceforge.net/p/forge/documentation/SFTP/#for-managing-file-releases
+  CHAT\_ID| List of telegram chat id separated by space where to send info about the latest builds. Set to 0 to disable telegram notifications.
+  SF\_URL| Url to the sourceforge directory where the builds are uploaded. Used if telegram notifications are enabled.
   EXTRA\_ARGS| Extra arguments to pass to url2GSI.sh script.
 
 # SourceForge Configuration
