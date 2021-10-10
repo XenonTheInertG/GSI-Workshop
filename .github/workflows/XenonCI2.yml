@@ -40,7 +40,7 @@ jobs:
               cd ErfanGSIs
               sudo bash setup.sh
 
-      - name: Build A/B
+      - name: Build AB & AOnly
         if: ${{ steps.config.outputs.output_type == 'all' }}
         run: |
           sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" "${{ steps.config.outputs.extra_args }}"
@@ -53,7 +53,7 @@ jobs:
         run: |
           sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --aonly ${{ steps.config.outputs.extra_args }}
 
-      - name: Repack A/B and upload
+      - name: Repack AB,AOnly and upload
         if: ${{ steps.config.outputs.output_type == 'all' }}
         run: |
               mkdir final
@@ -65,7 +65,7 @@ jobs:
               ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z
                    
       - name: Repack Aonly and upload
-        if: ${{ steps.config.outputs.output_type == 'all' }} 
+        if: ${{ steps.config.outputs.output_type == 'a' }} 
         run: |
               mkdir final
               sudo chmod -R 777 ErfanGSIs/output
@@ -77,6 +77,6 @@ jobs:
         run: |
               zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
               ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z      
-      - name: Print build info
+      - name: Print Build Info
         run: |
               cat ErfanGSIs/output/*-Aonly-*.txt
