@@ -59,4 +59,4 @@ jobs:
               sudo chmod -R 777 ErfanGSIs/output
               zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
               zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
-       -uses: softprops/action-gh-release@v1
+      - uses: softprops/action-gh-release@v1
