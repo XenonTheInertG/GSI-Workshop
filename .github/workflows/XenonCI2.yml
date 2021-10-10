@@ -39,18 +39,41 @@ jobs:
               sudo chmod -R 777 ErfanGSIs
               cd ErfanGSIs
               sudo bash setup.sh
-       
-      - name: Download Stock Rom & Generate GSI
-        run: sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}"
-       
-      - name: Repack Aonly and upload 
+
+      - name: Build A/B
+        if: ${{ steps.config.outputs.output_type == 'all' }}
+        run: |
+          sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" "${{ steps.config.outputs.extra_args }}"
+      - name: Build AB
+        if: ${{ steps.config.outputs.output_type == 'ab' }}
+        run: |
+          sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --ab ${{ steps.config.outputs.extra_args }}
+      - name: Build AOnly
+        if: ${{ steps.config.outputs.output_type == 'a' }}
+        run: |
+          sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --aonly ${{ steps.config.outputs.extra_args }}
+
+      - name: Repack A/B and upload
+        if: ${{ steps.config.outputs.output_type == 'all' }}
+        run: |
+              mkdir final
+              sudo chmod -R 777 ErfanGSIs/output
+              zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
+              zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
+              curl -sL https://git.io/file-transfer | sh
+              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z
+              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z
+                   
+      - name: Repack Aonly and upload
+        if: ${{ steps.config.outputs.output_type == 'all' }} 
         run: |
               mkdir final
               sudo chmod -R 777 ErfanGSIs/output
               zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
               curl -sL https://git.io/file-transfer | sh
               ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z          
-      - name: Repack AB and upload 
+      - name: Repack AB and upload
+        if: ${{ steps.config.outputs.output_type == 'ab' }} 
         run: |
               zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
               ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z      
