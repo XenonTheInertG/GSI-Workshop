@@ -22,18 +22,18 @@ jobs:
         run: |
           function required () { if ! [[ "$1" ]]; then echo "$2 variable can't be null." && exit 1; fi }
           required "${{ steps.config.outputs.url }}" "URL config"
-          required "${{ steps.config.outputs.rom_type }}" "ROM_TYPE config"
-          required "${{ steps.config.outputs.build_type }}" "BUILD_TYPE config"
+          required "${{ steps.config.outputs.firmware_type }}" "FIRMWARE_TYPE config"
+          required "${{ steps.config.outputs.output_type }}" "OUTPUT_TYPE config"
           required "${{ steps.config.outputs.repack_name }}" "REPACK_NAME config"
 
-      - name: Initialization environment
+      - name: Initializing environment
         run: |
             sudo -E apt-get -qq install git wget
        
       - name: Clone ErfanGSI Source Code
         run: git clone --recurse-submodules https://github.com/XenonTheInertG/XenonGSIs.git ErfanGSIs
        
-      - name: Setting up ErfanGSI requirements with GSI Workshop setup script
+      - name: Setting up ErfanGSI requirements
         run: |
               sudo chmod -R 777 ErfanGSIs
               cd ErfanGSIs
@@ -41,9 +41,9 @@ jobs:
               
       - name: Download Stock Rom & Generate GSI
         run: |
-              sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.rom_type }}" "${{ steps.config.outputs.build_type }}"
+              sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" "${{ steps.config.outputs.output_type }}" "${{ steps.config.outputs.extra_args }}"
        
-      - name: Zip GSI  
+      - name: Repack GSI  
         run: |
               mkdir final
               sudo chmod -R 777 ErfanGSIs/output
