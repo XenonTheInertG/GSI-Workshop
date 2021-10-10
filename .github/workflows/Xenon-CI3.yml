@@ -39,19 +39,24 @@ jobs:
               cd ErfanGSIs
               sudo bash setup.sh
               
-      - name: Download Stock Rom & Generate GSI
+      - name: Build AB & AOnly
+        if: ${{ steps.config.outputs.output_type == 'all' }}
         run: |
-              sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" "${{ steps.config.outputs.output_type }}" "${{ steps.config.outputs.extra_args }}"
+          sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" "${{ steps.config.outputs.extra_args }}"
+      - name: Build AB
+        if: ${{ steps.config.outputs.output_type == 'ab' }}
+        run: |
+          sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --ab ${{ steps.config.outputs.extra_args }}
+      - name: Build AOnly
+        if: ${{ steps.config.outputs.output_type == 'a' }}
+        run: |
+          sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --aonly ${{ steps.config.outputs.extra_args }}
        
-      - name: Repack GSI  
+      - name: Repack AB,Aonly & Upload
+        if: ${{ steps.config.outputs.output_type == 'all' }}
         run: |
               mkdir final
               sudo chmod -R 777 ErfanGSIs/output
               zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
-              zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img               
-              
-      - name: Upload GSI to action-release.
-        uses: softprops/action-gh-release@v1
-        with:
-           tag_name: test
-           files: ${{ github.workspace }}/ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z
+              zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
+       -uses: softprops/action-gh-release@v1
