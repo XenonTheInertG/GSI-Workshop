@@ -60,3 +60,7 @@ jobs:
               zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
               zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
       - uses: softprops/action-gh-release@v1
+        with:
+           files: ${{ github.workspace }}/ErfanGSI/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z
+           name: test
+           tag_name: 12
