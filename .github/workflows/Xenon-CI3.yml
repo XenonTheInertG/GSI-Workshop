@@ -61,6 +61,6 @@ jobs:
               zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: home/runner/ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z
+          artifacts: ${{ github.workspace }}/ErfanGSIs/output/*.7z
           token: ${{ secrets.TOKEN }}
           tag: V1.0
