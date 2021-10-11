@@ -82,7 +82,7 @@ jobs:
           token: ${{ secrets.TOKEN }}
           tag: "${{ steps.config.outputs.firmware_type }}"
 
-     - name: Upload AB
+      - name: Upload AB
         if: ${{ steps.config.outputs.output_type == 'ab' }}
       - uses: ncipollo/release-action@v1
         with:
@@ -90,7 +90,7 @@ jobs:
           token: ${{ secrets.TOKEN }}
           tag: "${{ steps.config.outputs.firmware_type }}"
 
-- name: Upload A Only
+      - name: Upload A Only
         if: ${{ steps.config.outputs.output_type == 'a' }}
       - uses: ncipollo/release-action@v1
         with:
