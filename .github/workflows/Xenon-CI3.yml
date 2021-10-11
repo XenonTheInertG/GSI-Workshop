@@ -63,3 +63,4 @@ jobs:
         with:
           artifacts: home/runner/ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z
           token: ${{ secrets.TOKEN }}
+          tag: V1.0
