@@ -59,7 +59,7 @@ jobs:
               sudo chmod -R 777 ErfanGSIs/output
               zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
               zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
-        uses: ncipollo/release-action@v1
+      - uses: ncipollo/release-action@v1
         with:
           artifacts: home/runner/ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z
           token: ${{ secrets.TOKEN }}
