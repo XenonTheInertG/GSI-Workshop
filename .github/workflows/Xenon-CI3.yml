@@ -76,7 +76,7 @@ jobs:
 
       - name: Upload AB,Aonly
         if: ${{ steps.config.outputs.output_type == 'all' }}
-      - uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1
         with:
           artifacts: ${{ github.workspace }}/ErfanGSIs/output/*.7z
           token: ${{ secrets.TOKEN }}
@@ -84,7 +84,7 @@ jobs:
 
       - name: Upload AB
         if: ${{ steps.config.outputs.output_type == 'ab' }}
-      - uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1
         with:
           artifacts: ${{ github.workspace }}/ErfanGSIs/output/*.7z
           token: ${{ secrets.TOKEN }}
@@ -92,7 +92,7 @@ jobs:
 
       - name: Upload A Only
         if: ${{ steps.config.outputs.output_type == 'a' }}
-      - uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1
         with:
           artifacts: ${{ github.workspace }}/ErfanGSIs/output/*.7z
           token: ${{ secrets.TOKEN }}
