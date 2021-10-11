@@ -52,15 +52,48 @@ jobs:
         run: |
           sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --aonly ${{ steps.config.outputs.extra_args }}
        
-      - name: Repack AB,Aonly & Upload
+      - name: Repack AB,Aonly
         if: ${{ steps.config.outputs.output_type == 'all' }}
         run: |
               mkdir final
               sudo chmod -R 777 ErfanGSIs/output
               zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
               zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
+
+      - name: Repack Aonly
+        if: ${{ steps.config.outputs.output_type == 'a' }}
+        run: |
+              mkdir final
+              sudo chmod -R 777 ErfanGSIs/output
+              zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
+
+      - name: Repack AB
+        if: ${{ steps.config.outputs.output_type == 'ab' }}
+        run: |
+              mkdir final
+              sudo chmod -R 777 ErfanGSIs/output
+              zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
+
+      - name: Upload AB,Aonly
+        if: ${{ steps.config.outputs.output_type == 'all' }}
       - uses: ncipollo/release-action@v1
         with:
           artifacts: ${{ github.workspace }}/ErfanGSIs/output/*.7z
           token: ${{ secrets.TOKEN }}
-          tag: V1.0
+          tag: "${{ steps.config.outputs.firmware_type }}"
+
+     - name: Upload AB
+        if: ${{ steps.config.outputs.output_type == 'ab' }}
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: ${{ github.workspace }}/ErfanGSIs/output/*.7z
+          token: ${{ secrets.TOKEN }}
+          tag: "${{ steps.config.outputs.firmware_type }}"
+
+- name: Upload A Only
+        if: ${{ steps.config.outputs.output_type == 'a' }}
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: ${{ github.workspace }}/ErfanGSIs/output/*.7z
+          token: ${{ secrets.TOKEN }}
+          tag: "${{ steps.config.outputs.firmware_type }}"
