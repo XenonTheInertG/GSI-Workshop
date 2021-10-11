@@ -58,25 +58,25 @@ jobs:
         run: |
               mkdir final
               sudo chmod -R 777 ErfanGSIs/output
-              gzip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.gz ErfanGSIs/output/*-Aonly-*.img
-              gzip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.gz ErfanGSIs/output/*-AB-*.img
+              zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
+              zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
               curl -sL https://git.io/file-transfer | sh
-              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.gz
-              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.gz
-
+              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z
+              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z
+                   
       - name: Repack Aonly and upload
         if: ${{ steps.config.outputs.output_type == 'a' }} 
         run: |
               mkdir final
               sudo chmod -R 777 ErfanGSIs/output
-              gzip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.gz ErfanGSIs/output/*-Aonly-*.img
+              zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
               curl -sL https://git.io/file-transfer | sh
-              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.gz
+              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z          
       - name: Repack AB and upload
         if: ${{ steps.config.outputs.output_type == 'ab' }} 
         run: |
-              gzip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.gz ErfanGSIs/output/*-AB-*.img
-              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.gz
+              zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
+              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z      
       - name: Print Build Info
         run: |
               cat ErfanGSIs/output/*-Aonly-*.txt
