@@ -78,19 +78,19 @@ jobs:
         if: ${{ steps.config.outputs.output_type == 'all' }}
         uses: actions/upload-artifact@master
         with:
-        name: "${{ steps.config.outputs.repack_name }}"
-        path: ${{ github.workspace }}/ErfanGSIs/output/*.7z
+          name: "${{ steps.config.outputs.repack_name }}"
+          path: ${{ github.workspace }}/ErfanGSIs/output/*.7z
 
       - name: Upload AB
         if: ${{ steps.config.outputs.output_type == 'ab' }}
         uses: actions/upload-artifact@master
         with:
-        name: "${{ steps.config.outputs.repack_name }}"
-        path: ${{ github.workspace }}/ErfanGSIs/output/*.7z
+          name: "${{ steps.config.outputs.repack_name }}"
+          path: ${{ github.workspace }}/ErfanGSIs/output/*.7z
 
       - name: Upload A Only
         if: ${{ steps.config.outputs.output_type == 'a' }}
         uses: actions/upload-artifact@master
         with:
-        name: "${{ steps.config.outputs.repack_name }}"
-        path: ${{ github.workspace }}/ErfanGSIs/output/*.7z
+          name: "${{ steps.config.outputs.repack_name }}"
+          path: ${{ github.workspace }}/ErfanGSIs/output/*.7z
