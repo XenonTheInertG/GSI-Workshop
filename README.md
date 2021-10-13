@@ -1,17 +1,13 @@
-Port OEM ROMs,Custom ROMs to project treble using github actions and [ErfanGSIs](https://github.com/erfanoabdi/ErfanGSIs) then upload to sourceforge,github releases & other file upload websites.
+Port OEM ROMs,Custom ROMs to project treble using github actions and [ErfanGSIs](https://github.com/erfanoabdi/ErfanGSIs) then upload to sourceforge,github releases,artifacts,telegram & other file upload websites.
 
 [![GSI-Workshop](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI.yml/badge.svg)](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI.yml) [![GSI-Workshop2](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/XenonCI2.yml/badge.svg)](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/XenonCI2.yml) [![GSI-Workshop3](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI3.yml/badge.svg)](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI3.yml) [![GSI-Workshop4](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI4.yml/badge.svg)](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI4.yml)
-[![Download GSI-Workshop GSIs](https://img.shields.io/sourceforge/dm/velosh-gsis.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download)
-[![Download GSI-Workshop GSIs](https://img.shields.io/sourceforge/dw/velosh-gsis.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download)
-[![Download GSI-Workshop GSIs](https://img.shields.io/sourceforge/dt/velosh-gsis.svg)](https://sourceforge.net/projects/gsi-workshop/files/latest/download) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/2cadab25a04c42779f3203b4a61bd6ef)](https://app.codacy.com/gh/XenonTheInertG/GSI-Workshop?utm_source=github.com&utm_medium=referral&utm_content=XenonTheInertG/GSI-Workshop&utm_campaign=Badge_Grade) [![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](t.me/techtweaky)
-
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Features
-- Easy to use.
-- Modular & fast
+- Easy to use & understand.
+- Modular & fast so you can do whatever you want.
 - Customizable. Chose your own custom ErfanGSIs tool, chose build type (A only or AB or both), and many more.
-- Deploy ported GSI to sourceforge,github releases & other file upload websites
+- Deploy ported GSI to sourceforge,github releases,artifacts,telegram & other file upload websites.
 - Send notifications on telegram with informations about the latest build.
 
 # Requirements
