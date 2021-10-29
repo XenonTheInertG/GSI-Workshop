@@ -21,6 +21,7 @@ jobs:
       - name: Check Configuration
         run: |
           function required () { if ! [[ "$1" ]]; then echo "$2 variable can't be null." && exit 1; fi }
+          required "${{ steps.config.outputs.tool_repo }}" "TOOL_REPO config"
           required "${{ steps.config.outputs.url }}" "URL config"
           required "${{ steps.config.outputs.firmware_type }}" "FIRMWARE_TYPE config"
           required "${{ steps.config.outputs.repack_name }}" "REPACK_NAME config"
