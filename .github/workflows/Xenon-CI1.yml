@@ -29,6 +29,9 @@ jobs:
           required "${{ steps.config.outputs.firmware_type }}" "FIRMWARE_TYPE config"
           required "${{ steps.config.outputs.sf_dir }}" "SF_DIR config"
           required "${{ steps.config.outputs.output_type }}" "OUTPUT_TYPE config"
+      - name: Cleanup workspace
+        uses: rokibhasansagar/slimhub_actions@main
+
       - name: Setup ErfanGSIs Tools
         run: |
           git clone --recurse-submodules "${{ steps.config.outputs.tool_repo }}" ErfanGSIs
