@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Load Configuration
-        uses: falti/dotenv-action@v0.2.5
+        uses: falti/dotenv-action@v0.2.7
         id: config
         with:
           path: config4.env
