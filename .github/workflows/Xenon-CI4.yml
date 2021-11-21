@@ -26,8 +26,6 @@ jobs:
           required "${{ steps.config.outputs.firmware_type }}" "FIRMWARE_TYPE config"
           required "${{ steps.config.outputs.output_type }}" "OUTPUT_TYPE config"
           required "${{ steps.config.outputs.repack_name }}" "REPACK_NAME config"
-      - name: Cleanup workspace
-        uses: rokibhasansagar/slimhub_actions@main
 
       - name: Initializing environment
         run: |
