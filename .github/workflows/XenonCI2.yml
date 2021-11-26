@@ -66,14 +66,16 @@ jobs:
         run: |
               mkdir final
               sudo chmod -R 777 ErfanGSIs/output
-              zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
-              curl -sL https://git.io/file-transfer | sh
-              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z          
+              zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img *
+              touch dl.txt
+              curl -sL https://git.io/file-transfer | sh 
+              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-Aonly.7z | gprep Download >> dl.txt        
       - name: Repack AB and upload
         if: ${{ steps.config.outputs.output_type == 'ab' }} 
         run: |
               zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
               ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z      
-      - name: Print Build Info
+      - name: Print Build Info & Download Link
         run: |
               cat ErfanGSIs/output/*-Aonly-*.txt
+              cat final/input/dl.txt
