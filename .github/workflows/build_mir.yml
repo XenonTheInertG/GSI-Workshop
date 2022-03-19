@@ -73,7 +73,4 @@ jobs:
         if: ${{ steps.config.outputs.output_type == 'ab' }} 
         run: |
               zip -r ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
-              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z      
-      - name: Print Build Info
-        run: |
-              cat ErfanGSIs/output/*-Aonly-*.txt
+              ./transfer "${{ steps.config.outputs.mir }}" ErfanGSIs/output/"${{ steps.config.outputs.repack_name }}"-GSI-AB.7z

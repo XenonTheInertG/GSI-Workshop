@@ -92,7 +92,3 @@ jobs:
         with:
           name: "${{ steps.config.outputs.repack_name }}"
           path: ${{ github.workspace }}/ErfanGSIs/output/*.7z
-  
-      - name: Print Build Info
-        run: |
-              cat ErfanGSIs/output/*-Aonly-*.txt

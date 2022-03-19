@@ -95,7 +95,3 @@ jobs:
           artifacts: ${{ github.workspace }}/ErfanGSIs/output/*.7z
           token: ${{ secrets.GIT_TOKEN }}
           tag: "${{ steps.config.outputs.firmware_type }}"
-
-      - name: Print Build Info
-        run: |
-              cat ErfanGSIs/output/*-Aonly-*.txt
