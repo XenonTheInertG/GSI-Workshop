@@ -1,7 +1,5 @@
 Port OEM ROMs,Custom ROMs to project treble using github actions and [ErfanGSIs](https://github.com/erfanoabdi/ErfanGSIs) then upload to sourceforge,github releases,artifacts,telegram & other file upload websites.
 
-[![GSI-Workshop1](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI1.yml/badge.svg)](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI1.yml) [![GSI-Workshop2](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/XenonCI2.yml/badge.svg)](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/XenonCI2.yml) [![GSI-Workshop3](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI3.yml/badge.svg)](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI3.yml) [![GSI-Workshop4](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI4.yml/badge.svg)](https://github.com/XenonTheInertG/GSI-Workshop/actions/workflows/Xenon-CI4.yml)
-
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Features
 - Easy to use & understand.
